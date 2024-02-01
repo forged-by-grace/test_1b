@@ -107,7 +107,9 @@ def process_request(body):
             # Remove apples
             if 'apples' in allowed_fruits:
                 allowed_fruits.remove('apples')
-   
+    else:
+        return "No fruits were recommended"
+    
     # Create prompt
     if len(allowed_fruits) > 1:
         prompt = f"Please recommend some fruits from the following; {', '.join(allowed_fruits)} for me for a weekend party."       
@@ -115,6 +117,7 @@ def process_request(body):
         prompt = f"Say based on your budget, you can take {''.join(allowed_fruits)}!"
     
     # Send prompt to gpt for response
+    #print(prompt)
     response = get_gpt_response(prompt)
 
     return response
